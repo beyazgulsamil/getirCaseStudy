@@ -8,9 +8,11 @@ public abstract class Utilities extends Driver {
 
     public Utilities(){PageFactory.initElements(driver, this);}
 
-    public void clickElement(WebElement element){waitUntilClickable(centerElement(element),System.currentTimeMillis()).click();}
+    public void clickElement(WebElement element){
+        waitUntilClickable(centerElement(element),System.currentTimeMillis()).click();}
 
-    public void fillInput(WebElement inputBox, String inputText){centerElement(waitUntilVisible(inputBox,System.currentTimeMillis())).sendKeys(inputText);}
+    public void fillInput(WebElement inputBox, String inputText){
+        centerElement(waitUntilVisible(inputBox,System.currentTimeMillis())).sendKeys(inputText);}
 
     public String getElementAttribute(WebElement element, String attributeName){return element.getAttribute(attributeName);}
 
