@@ -1,10 +1,14 @@
 package steps;
 
 import io.cucumber.java.en.Then;
+import org.openqa.selenium.By;
 import pages.HomePage;
 
 public class HomePageSteps {
     HomePage homePage = new HomePage();
+
+    @Then("Verify Click Element {}")
+    public void verifyElement(String input){homePage.clickElement(homePage.example.findElement(By.partialLinkText(input)));}
 
     @Then("I choose getir type {}")
     public void typeChoose(String type){homePage.clickGetirType(type);}
@@ -18,7 +22,7 @@ public class HomePageSteps {
     @Then("I Log in to country area code {}")
     public void area(String areaCode){
         homePage.clickElement(homePage.flagLog);
-        homePage.country(areaCode);}
+        homePage.loopAndClick(homePage.countrys,areaCode);}
 
     @Then("I enter number {}")
     public void enterNumber(String number){homePage.fillInput(homePage.numberArea,number);}
@@ -44,10 +48,10 @@ public class HomePageSteps {
         homePage.country(areaCode);}
 
     @Then("I select to product type {}")
-    public void productTypeSelect(String typeName){homePage.selectProductType(typeName);}
+    public void productTypeSelect(String typeName){homePage.loopAndClick(homePage.productTypeList,typeName);}
 
     @Then("Select to product {}")
-    public void productSelect(String productName){homePage.selectProduct(productName);}
+    public void productSelect(String productName){homePage.loopAndClick(homePage.productList,productName);}
 
     @Then("I click to getir")
     public void clickGetir(){homePage.clickElement(homePage.getir);}
@@ -60,6 +64,15 @@ public class HomePageSteps {
 
     @Then("I click to getirSu")
     public void clickGetirSu(){homePage.clickElement(homePage.getirSu);}
+
+    @Then("This product add to box")
+    public void clickAddBox(){homePage.clickElement(homePage.addBox);}
+
+    @Then("Food type menu to {} slide")
+    public void slideFood(String direction){homePage.slide(direction);}
+
+    @Then("I select food type {}")
+    public void selectFoodType(String foodType){homePage.loopAndClick(homePage.foodTypeList,foodType);}
 
 
 }
